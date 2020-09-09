@@ -1,5 +1,0 @@
-US 10  0  0  8
-   1.50   0.70   1.00   0.70   0.15   0.15   0.50
-#TThe CRYSTALS Reference Manual#
-
-#
