@@ -170,7 +170,7 @@ C Re-initialise system variables in case starting again.
 #endif
 
       CALL CRESET   !These routines reinitialise SOME of the COMMON block variables, but
-      CALL CAMSET   !they also ensure those object files (presets and block) are linked.
+                    !they also ensure those object files (presets and block) are linked.
 C
 C----- INITIALISE THE CARRIAGE CONTROL VARIABLES
       CALL FBCINI

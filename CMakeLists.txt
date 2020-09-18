@@ -19,7 +19,6 @@ option (useOPENMP "useOPENMP" ON)
 option (useHDF5 "useHDF5" OFF) # hdf5 storage, use system library
 option (compileHDF5 "compileHDF5" OFF) # hdf5 storage, download and compile hdf5
 option (useGGDB3 "useGGDB3" OFF) # used for orion (old dgb)
-option (usepFUnit "usepFUnit" OFF)
 option (useFAST "useFAST" OFF)
 
 option (withSUPERFLIP "withSUPERFLIP" OFF)
@@ -472,10 +471,9 @@ endif ()
 #INCLUDE(CTest)
 
 # Libraries
-ADD_SUBDIRECTORY(script)
 ADD_SUBDIRECTORY(sginfo)
+ADD_SUBDIRECTORY(script)
 ADD_SUBDIRECTORY(crystals crys_fortran)
-ADD_SUBDIRECTORY(cameron)
 ADD_SUBDIRECTORY(datafiles)
 ADD_SUBDIRECTORY(precomp)
 if ( useGUI )
@@ -485,90 +483,10 @@ ADD_SUBDIRECTORY(bits)
 if ( usePY )
     ADD_SUBDIRECTORY(pyinterface)
 endif()
-#if (IFORT_COMPILER)
-#	add_subdirectory(mklbuilder)
-#endif
-
-
-# Because external project call cmake externally too we need to pass the compiler and module path via cmake_args
-if(compileHDF5)
-    include(${CMAKE_ROOT}/Modules/ExternalProject.cmake)
-    message("")
-    message(STATUS "Building hdf5")
-
-    find_package(ZLIB REQUIRED STATIC)
-
-    set(HDF5_prefix "${CMAKE_BINARY_DIR}/hdf5")
-    file(MAKE_DIRECTORY "${HDF5_prefix}")
-
-    set(hdf5url "https://www.hdfgroup.org/package/cmake-unix/?wpdmdl=4301")
-
-    #see http://hdf-forum.184993.n3.nabble.com/Compilation-of-HDF5-1-10-1-with-MSYS-and-MiNGW-td4029696.html
-    ExternalProject_Add(
-            hdf5_project
-            URL ${hdf5url}
-            DOWNLOAD_NAME "hdf5-1.10.1.tar.gz"
-            CMAKE_ARGS -DSF_MODPATH=${SF_MODPATH} -DCMAKE_Fortran_COMPILER=${CMAKE_Fortran_COMPILER} -DCMAKE_C_COMPILER=${CMAKE_C_COMPILER} -DCMAKE_CXX_COMPILER=${CMAKE_CXX_COMPILER}
-                            -DBUILD_SHARED_LIBS:Bool=OFF
-                            -DBUILD_TESTING:Bool=OFF
-                            -DHDF5_ENABLE_Z_LIB_SUPPORT:Bool=ON
-                            -DHDF5_BUILD_HL_LIB:Bool=ON
-                            -DHDF5_BUILD_TOOLS:Bool=OFF
-                            -DCMAKE_INSTALL_PREFIX:PATH=${HDF5_prefix}
-                            -DHDF5_BUILD_FORTRAN:BOOL=ON
-                            -DHDF5_ENABLE_F2003:BOOL=ON
-                            -DCMAKE_VERBOSE_MAKEFILE=ON
-                            -DCMAKE_Fortran_FLAGS=-cpp
-                            -G${CMAKE_GENERATOR}
-             SOURCE_SUBDIR "../hdf5_project/hdf5-1.10.1/"
-    )
-
-    # move mod files so that crystals can find them when its been built
-    ExternalProject_Add_Step(
-        hdf5_project mvmod
-        DEPENDEES  install
-        DEPENDERS
-        ALWAYS 1
-        COMMAND ${CMAKE_COMMAND} -E copy_directory  "${HDF5_prefix}/include/static" "${Fortran_MODULE_DIRECTORY}/"
-    )
-
-    # fix h5Config_f.inc files on windows. No harm to do on other platforms
-    ExternalProject_Add_Step(
-        hdf5_project fixh5sa
-        DEPENDEES configure
-        DEPENDERS build
-        COMMAND ${CMAKE_BINARY_DIR}/fixh5  ${CMAKE_BINARY_DIR}/hdf5_project-prefix/src/hdf5_project-build/H5config_f.inc
-    )
-    # fix H5fort_type_defines.h files on windows. No harm to do on other platforms
-    ExternalProject_Add_Step(
-        hdf5_project fixh5sb
-        DEPENDEES configure
-        DEPENDERS build
-        COMMAND ${CMAKE_BINARY_DIR}/fixh5  ${CMAKE_BINARY_DIR}/hdf5_project-prefix/src/hdf5_project-build/fortran/H5fort_type_defines.h
-    )
-
-
-    set(HDF5_LIBRARY_DIR "${HDF5_prefix}/lib")
-    set(HDF5_LIBRARY
-    "${HDF5_LIBRARY_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}hdf5_fortran-static.a;${HDF5_LIBRARY_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}hdf5_f90cstub-static.a;${HDF5_LIBRARY_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}hdf5-static.a")
-    set(HDF5_HL_LIBRARY
-    "${HDF5_LIBRARY_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}hdf5_hl_fortran-static.a;${HDF5_LIBRARY_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}hdf5_hl_f90cstub-static.a;${HDF5_LIBRARY_DIR}/${CMAKE_STATIC_LIBRARY_PREFIX}hdf5_hl-static.a")
-
-    set(HDF5_LIBRARIES "${HDF5_HL_LIBRARY};${HDF5_LIBRARY}")
-    INCLUDE_DIRECTORIES("${HDF5_prefix}/include")
-
-    message(STATUS "Using hdf5 libraries [${HDF5_LIBRARIES}]")
-
-
-    message(STATUS "End Building hdf5")
-endif()
 
 
 
-add_dependencies(CameronFortran CrystalsFortran)
-if( compileHDF5 )
-    add_dependencies(CrystalsFortran hdf5_project)
-endif ()
+
 
 # Executables
 get_property(value DIRECTORY PROPERTY COMPILE_DEFINITIONS)
@@ -648,22 +566,22 @@ if ( useMULTIDEF_WORKAROUND )
     set (CMAKE_EXE_LINKER_FLAGS -Wl,--allow-multiple-definition )
 endif()
 
-    TARGET_LINK_LIBRARIES(crystals CrystalsFortran CameronFortran ${wxWidgets_LIBRARIES} ${MSYS2LIBS} ${wxSTATICEXTRA_LIBS})
+    TARGET_LINK_LIBRARIES(crystals CrystalsFortran ${wxWidgets_LIBRARIES} ${MSYS2LIBS} ${wxSTATICEXTRA_LIBS})
     SET_TARGET_PROPERTIES(CrystalsFortran PROPERTIES COMPILE_DEFINITIONS  CRY_GUI)
     SET_TARGET_PROPERTIES(CrystalsFortran PROPERTIES Fortran_MODULE_DIRECTORY ${Fortran_MODULE_DIRECTORY} )
 
 #    SET_TARGET_PROPERTIES(crystalscl PROPERTIES LINKER_LANGUAGE Fortran)
-    TARGET_LINK_LIBRARIES(crystalscl CrystalsFortran CameronFortran)
+    TARGET_LINK_LIBRARIES(crystalscl CrystalsFortran )
 #    SET_TARGET_PROPERTIES(CrystalsFortran PROPERTIES COMPILE_DEFINITIONS  CRY_NOGUI)
 
 elseif( usePY )
     ADD_EXECUTABLE (crystals ${scpfiles} ${datfiles} ${srtfiles} crystals/crystals.F)
     SET_TARGET_PROPERTIES(crystals PROPERTIES LINKER_LANGUAGE Fortran)
-    TARGET_LINK_LIBRARIES(crystals CrystalsFortran CameronFortran )
+    TARGET_LINK_LIBRARIES(crystals CrystalsFortran )
 else()
     ADD_EXECUTABLE (crystals ${scpfiles} ${datfiles} ${srtfiles} crystals/crystals.F)
     SET_TARGET_PROPERTIES(crystals PROPERTIES LINKER_LANGUAGE Fortran)
-    TARGET_LINK_LIBRARIES(crystals CrystalsFortran CameronFortran)
+    TARGET_LINK_LIBRARIES(crystals CrystalsFortran )
     SET_TARGET_PROPERTIES(CrystalsFortran PROPERTIES COMPILE_DEFINITIONS  CRY_NOGUI)
 endif()
 
@@ -696,5 +614,3 @@ endif ()
 ADD_CUSTOM_TARGET ( startups ALL DEPENDS dscbuild ${srtfiles} )
 ADD_CUSTOM_TARGET ( dscbuild ALL DEPENDS commands.dsc crystals )
 
-# Unit testing
-ADD_SUBDIRECTORY(pFunit)

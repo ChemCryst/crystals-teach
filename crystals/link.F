@@ -1874,13 +1874,13 @@ C - Only GID needs funny text strings to initialise the graphics.
 C - Could move these to ZCAMER.
 
 #ifdef CRY_GUI
-        WRITE(CHARTC,'(A)') '^^CH CHART _CAMERONCHART'
-        CALL ZMORE(CHARTC,0)
-        WRITE(CHARTC,'(A)') '^^CH ATTACH _CAMERONVIEW'
-        CALL ZMORE(CHARTC,0)
-        WRITE(CHARTC,'(A)') '^^CW'
-        CALL ZMORE(CHARTC,0)
-        CALL ZCAMER ( 1, 0 , 0 , 0)
+!        WRITE(CHARTC,'(A)') '^^CH CHART _CAMERONCHART'
+!        CALL ZMORE(CHARTC,0)
+!        WRITE(CHARTC,'(A)') '^^CH ATTACH _CAMERONVIEW'
+!        CALL ZMORE(CHARTC,0)
+!        WRITE(CHARTC,'(A)') '^^CW'
+!        CALL ZMORE(CHARTC,0)
+!        CALL ZCAMER ( 1, 0 , 0 , 0)
 #endif
 8025  CONTINUE
         IF (LCLOSE) THEN
@@ -1890,7 +1890,7 @@ C - Could move these to ZCAMER.
         ISTAT = KRDREC(IIIIIN)
         WRITE(CHRBUF,'(256A1)')LCMAGE(1:256)
 #ifdef CRY_GUI
-         CALL ZCONTR
+!         CALL ZCONTR
 #endif
       GOTO 8025
 

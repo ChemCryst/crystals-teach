@@ -1494,6 +1494,27 @@ c             CALL XPRVDU(NCVDU, 1,0)
               WRITE ( CMON, 211 ) (STORE(L1P1+J),J=0,2),
      1                          (STORE(L1P1+J)*RTD,J=3,5)
               CALL XPRVDU(NCVDU, 7,0)
+212           FORMAT ('^^WI SAFESET [ _MT_CELLABC TEXT "',F8.3,', ',
+     1                F8.3, ', ',
+     1                F8.3, '" ]', /,
+     1                '^^WI SAFESET [ _MT_CELLABG TEXT "',
+     1                F7.3, ', ',
+     1                F7.3, ', ',
+     1                F7.3, '" ]', /,
+     1                '^^CR')
+              WRITE ( CMON, 212 ) (STORE(L1P1+J),J=0,2),
+     1                          (STORE(L1P1+J)*RTD,J=3,5)
+              NINETY = INDEX(CMON(2),"90.000")
+              DO WHILE (NINETY .NE. 0)
+                CMON(2)(NINETY+2:NINETY+5) = "    "
+                NINETY = INDEX(CMON(2),"90.000")
+              END DO
+              CALL XCREMS1(CMON(1),LENC)
+			  CMON(1)(LENC+1:)=' '   !xcrems1 does not clear remaining buffer. Can't use LENC in xprvdu call.
+              CALL XCREMS1(CMON(2),LENC)
+			  CMON(2)(LENC+1:)=' '
+              CALL XPRVDU(NCVDU, 3,0)
+              
             ENDIF
 
          ELSE IF ( ILST .EQ. 2 ) THEN   ! space group - update info tab.
@@ -1536,10 +1557,11 @@ c             CALL XPRVDU(NCVDU, 1,0)
             IF ( L23SR.NE.ISERnn(23) )THEN
               ISERnn(23)  = L23SR
               IF ( ISTORE ( L23MN + 1 ) .EQ. -1 ) THEN
-               WRITE (CMON,2) '^^CO SAFESET [ _MT_REF_COEF TEXT ''F'' ]'
+               WRITE (CMON,2) 
+     1 '^^CO SAFESET [ _MT_REF_COEF TEXT ''\Sigma(Fo-Fc)\**2'' ]'
               ELSE IF ( ISTORE ( L23MN + 1 ) .EQ. 0 ) THEN
                WRITE (CMON,2)
-     1                '^^CO SAFESET [ _MT_REF_COEF TEXT ''F squared'' ]'
+     1'^^CO SAFESET [ _MT_REF_COEF TEXT ''\Sigma[Fo\**2-Fc\**2]\**2'' ]'
               ELSE
                WRITE(CMON,2)
      1                '^^CO SAFESET [ _MT_REF_COEF TEXT ''Unknown'' ]'
@@ -1660,6 +1682,8 @@ c             CALL XPRVDU(NCVDU, 1,0)
 
 246           FORMAT('^^WI SAFESET [ _MT_REF_R TEXT ',F8.2,' ]',
      1                   ' SAFESET [ _MT_REF_RW TEXT ',F8.2,' ]',/,
+     1               '^^WI SAFESET [ _MT_REF_RCUT TEXT ',F8.2,' ]',
+     1                   ' SAFESET [ _MT_REF_WRCUT TEXT ',F8.2,' ]',/,
      1               '^^WI SAFESET [ _MT_REF_NPAR TEXT ',F9.0,' ]',
      1                   ' SAFESET [ _MT_REF_SCUT TEXT ',A,' ]',/,
      1               '^^WI SAFESET [ _MT_REF_GOOF TEXT ',F9.3,' ]',
@@ -1667,9 +1691,10 @@ c             CALL XPRVDU(NCVDU, 1,0)
      1               '^^WI SAFESET [ _MT_REF_NREF TEXT ',F7.0,' ]',/,
      1               '^^CR')
               WRITE ( CMON, 246 ) STORE(L30RF), STORE(L30RF+1),
+     1            STORE(L30CF+2), STORE(L30CF+3),
      1            STORE(L30RF+2), CCOL,  STORE(L30RF+4),
      1            STORE(L30RF+7),STORE(L30RF+8)
-              CALL XPRVDU(NCVDU, 5, 0)
+              CALL XPRVDU(NCVDU, 6, 0)
             ENDIF
 
 
@@ -1823,7 +1848,7 @@ c             CALL XPRVDU(NCVDU, 1,0)
            END IF
 
 1107       FORMAT ('^^CO SAFESET [ _MT_WAVE TEXT "',F8.5,1X,
-     2             'Angstroms (',A,')" ]')
+     2             '\AA (',A,')" ]')
            WRITE(CMON,1107) STORE(L13DC),
      2  CRADTN(ISTORE(L13DT+1)+2)(1:LEN_TRIM(CRADTN(ISTORE(L13DT+1)+2)))
            CALL XPRVDU(NCVDU, 1,0)

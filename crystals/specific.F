@@ -2657,3 +2657,112 @@ C            call SYSTEM( CMDLINE )
       END DO
       RETURN
       END 
+
+      SUBROUTINE ZMORE (TEXT,IFLAG)
+      INCLUDE 'CAMBLK.INC'
+      INCLUDE 'XIOBUF.INC'
+      EXTERNAL CRYBLK
+      CHARACTER*(*) TEXT
+      NCHAR = NCTRIM( TEXT )
+      ILL = MIN (NCHAR,80)
+      WRITE (CMON,'(A)') TEXT(1:ILL)
+      CALL XPRVDU (6,1,0)
+      RETURN
+      END
+
+CODE FOR ZEIGEN
+      SUBROUTINE ZEIGEN(A,R)
+C THIS CODE IS TAKEN FROM SNOOPI
+      REAL A(3,3),R(3,3)
+      R(1,1)=1.
+      R(1,2)=0.
+      R(1,3)=0.
+      R(2,1)=0.
+      R(2,2)=1.
+      R(2,3)=0.
+      R(3,1)=0.
+      R(3,2)=0.
+      R(3,3)=1.
+      NCOUNT=0
+      THR=1.414*SQRT(A(1,2)*A(1,2)+A(1,3)*A(1,3)+A(2,3)*A(2,3))
+      IF(THR.LT..0001)GOTO 55
+      THRLMT=THR*0.333E-6
+10      THR=THR/3
+      DO 50 N=1,2
+      K=3
+      DO 40 I=1,2
+      DO 30 J=2,3
+      IF(J .LE. I) GO TO 30
+      IF(ABS(A(I,J)).LT.THRLMT)GOTO 29
+      Y=A(I,J)+A(J,I)
+      X=A(J,J)-A(I,I)
+      RR =SQRT(X*X+Y*Y)
+      COZ=SQRT((X/RR+1)/2)
+      COZSQ=COZ*COZ
+      ZIN=SQRT(1-COZSQ)
+      IF(Y .LT. 0)COZ=-COZ
+      ZINSQ=ZIN*ZIN
+      ZINCOZ=ZIN*COZ
+      AKI=A(K,I)*COZ-A(K,J)*ZIN
+      A(K,J)=A(K,I)*ZIN+A(K,J)*COZ
+      A(K,I)=AKI
+      A(J,K)=A(K,J)
+      A(I,K)=AKI
+      AIJ=(A(I,I)-A(J,J))*ZINCOZ-A(J,I)*ZINSQ+A(I,J)*COZSQ
+      AII=A(I,I)*COZSQ+A(J,J)*ZINSQ-(A(I,J)+A(J,I))*ZINCOZ
+      A(J,J)=A(I,I)+A(J,J)-AII
+      A(I,I)=AII
+      A(I,J)=AIJ
+      A(J,I)=AIJ
+      RIK=R(I,K)*COZ-R(J,K)*ZIN
+      R(J,K)=R(I,K)*ZIN+R(J,K)*COZ
+      R(I,K)=RIK
+      RII=R(I,I)*COZ-R(J,I)*ZIN
+      RIJ=R(I,J)*COZ-R(J,J)*ZIN
+      R(J,J)=R(I,J)*ZIN+R(J,J)*COZ
+      R(J,I)=R(I,I)*ZIN+R(J,I)*COZ
+      R(I,J)=RIJ
+      R(I,I)=RII
+29    K=K-1
+30      CONTINUE
+40      CONTINUE
+50      CONTINUE
+      IF(THR.GT.THRLMT)GOTO 10
+55      MLT=3
+      IF(A(2,2).LT.A(3,3))MLT=2
+      IF(A(1,1).LT.A(MLT,MLT))MLT=1
+      IF(MLT.EQ.3)GOTO 65
+      DO 60 N=1,3
+      TEMP=R(3,N)
+      R(3,N)=R(MLT,N)
+60      R(MLT,N)=TEMP
+      TEMP=A(3,3)
+      A(3,3)=A(MLT,MLT)
+      A(MLT,MLT)=TEMP
+65      MGT=1
+      IF(A(2,2).GT.A(1,1))MGT=2
+      IF(A(3,3).GT.A(MGT,MGT))MGT=3
+      IF(MGT .EQ.1)GOTO 100
+      DO 70 N=1,3
+      TEMP=R(1,N)
+      R(1,N)=R(MGT,N)
+70      R(MGT,N)=TEMP
+      TEMP=A(MGT,MGT)
+      A(MGT,MGT)=A(1,1)
+      A(1,1)=TEMP
+100     DO 101 N1=1,3
+      FNORM=R(N1,1)*R(N1,1)+R(N1,2)*R(N1,2)+R(N1,3)*R(N1,3)
+      FNORM=SQRT(FNORM)
+      DO 101 N2=1,3
+101     R(N1,N2)=R(N1,N2)/FNORM
+      DET=R(1,1)*(R(2,2)*R(3,3)-R(3,2)*R(2,3))
+     1+R(1,2)*(R(2,3)*R(3,1)-R(3,3)*R(2,1))
+     1+R(1,3)*(R(2,1)*R(3,2)-R(3,1)*R(2,2))
+      IF(DET .GT. 0.)RETURN
+C       ROTATORY INVERSION CORRECTION
+      DO 110 N1=1,3
+      DO 110 N2=1,3
+110     R(N1,N2)=-R(N1,N2)
+      RETURN
+      END
+
