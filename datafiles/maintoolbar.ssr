@@ -3,6 +3,9 @@
 %
 ^^WI       @ 1,1 TOOLBAR _MAINBAR
 ^^WI       {
+^^WI         TOOL _MGU 'teach.png' 'Teaching data' '#SCRIPT XTEACH'
+^^WI           DISABLEIF='IN'
+^^WI         SPLIT
 ^^WI         TOOL _MGU 'guide.png' 'Guide' '#SCRIPT XGUIDE'
 ^^WI           DISABLEIF='IN'
 ^^WI         SPLIT
@@ -49,22 +52,10 @@
 ^^WI         TOOL _MGU 'export.png' 'Export' '#SCRIPT XCIF'  
 ^^WI           DISABLEIF='IN QS' ENABLEIF='L1 L2 L3 L5 L6'
 ^^WI         SPLIT
-^^WI         TOOL _MCA cam.png
-^^WI 'Manipulate the structure with Cameron graphics'
-^^WI         '#SCRIPT XCAMNORM'
-^^WI         DISABLEIF='IN' ENABLEIF='L5 L1 L2'
 ^^WI         TOOL _MRC 'mercury.png'
 ^^WI 'View the structure in Mercury'
 ^^WI         '#SCRIPT MERCURY'  DISABLEIF='IN' ENABLEIF='L5'
 ^^WI         SPLIT
-^^WI         TOOL _MNP 'notepad.png'
-^^WI 'Open Notepad'
-^^WI         '$notepad'   DISABLEIF='IN'
-#ifdef CRY_OSWIN32
-^^WI         TOOL _MCM 'cmd.png'
-^^WI 'Open a Command shell'
-^^WI         '$cmd' DISABLEIF='IN'
-#endif
 ^^WI         TOOL _MEX 'explorer.png'
 ^^WI 'Explore the current working folder'
 ^^WI         '$explorer ./'  DISABLEIF='IN'

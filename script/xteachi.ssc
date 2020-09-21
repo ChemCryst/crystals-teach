@@ -3,7 +3,9 @@
 %%
 %%
 %  VARIABLE CHARACTER CDIR CFDIR
-%%
+%% The variables needed by XQUESTIO
+% VARIABLE CHARACTER QTITLE QLINE1 QLINE2 BUTTOK BUTTXX 
+% VARIABLE LOGICAL   ANSWER T
 %%
 %  VERIFY GI_BXX MNCO6 MNCO3PY3 YLID PARA
 %  GET SILENT NOSTORE ABBREVIATED 'Continue?' 'GI_BXX'
@@ -37,9 +39,25 @@
  {I Reinstall CRYSTALS to restore the workshop data.
 %     FINISH
 %  END IF
-%%  EVALUATE T = FILEDELETE ( CFDIR // 'crfilev2.dsc' )
-%  EVALUATE T = FILEDELETE ( CFDIR // 'SIR9x.ins' )
-%  EVALUATE T = FILEDELETE ( CFDIR // 'pretwin6.dat' )
+%%
+%%
+%% If crfilev2.dsc present, offer to delete before continuing.
+%  IF ( FILEEXISTS ( CFDIR // 'crfilev2.dsc'  ) ) THEN
+%      EVALUATE QTITLE = 'Reset teaching example?'
+%      EVALUATE QLINE1 = 'There is previous work present. Open existing file or reset?'
+%      EVALUATE QLINE2 = CFDIR
+%      EVALUATE BUTTOK = '&Open existing work'
+%      EVALUATE BUTTXX = '&Reset'
+%      COPY '#SCRIPT XQUESTIO'
+%      IF ANSWER .EQ. FALSE THEN
+%        EVALUATE T = FILEDELETE ( CFDIR // 'crfilev2.dsc' )
+%      SHOW T
+{I  Teaching data reset.
+%      END IF
+%  END IF
+%%
+%  GET NOSTORE TEXT 'Press any key' 'Any'
+%%
 ^^WI  SET _MAIN TEXT=
 %     TRANSFER "^^WI 'Crystals - " // CFDIR // "'" TO DISPLAY
 ^^CR

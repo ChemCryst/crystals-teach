@@ -13,13 +13,13 @@
 ^^WI COMMAND='#SCRIPT XTEACHI' DISABLEIF='IN' CANCEL='GI_BXX'
 ^^WI GRID HO NROWS=11 NCOLS=3
 ^^WI {
-^^WI   @ 2,2 BUTTON YLID 'Load &Paracetamol structure'
-^^WI   @ 4,2 BUTTON MNCO6 'Load &Mo(CO)\_6 structure'
-^^WI   @ 6,2 BUTTON MNCO3PY3 'Load &Mo(CO)\_3(pyridine)\_3 structure'
-^^WI   @ 8,2 BUTTON YLID 'Load &Ylid data'
+^^WI   @ 2,2 BUTTON YLID 'Load &Paracetamol structure' DISABLEIF='IN'
+^^WI   @ 4,2 BUTTON MNCO6 'Load &Mo(CO)\_6 structure' DISABLEIF='IN'
+^^WI   @ 6,2 BUTTON MNCO3PY3 'Load &Mo(CO)\_3(pyridine)\_3 structure' DISABLEIF='IN'
+^^WI   @ 8,2 BUTTON YLID 'Load &Ylid data' DISABLEIF='IN'
 ^^WI   @ 10,2 GRID MID NROWS=3 NCOLS=3
 ^^WI   {
-^^WI     @ 1,1 STRETCH _H HORIZONTAL
+^^WI     @ 3,1 STRETCH _H HORIZONTAL
 ^^WI     @ 3,3 BUTTON GI_BXX '&Close' DISABLEIF='IN' DEFAULT COMMIT CANCEL
 ^^WI   }
 ^^WI }

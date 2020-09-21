@@ -1,0 +1,8 @@
+%SCRIPT XTEACHSTART
+%%
+%%
+%  IF ( EXISTS 1 .LE. 0 ) THEN 
+%% There is no data. Run import.
+%     COPY '#use import.dat' 
+%  END IF
+%END SCRIPT    

@@ -1,5 +1,8 @@
 %%SSR MENU-HELP
 ^^WI  MENU HELP '&Help'                                                         
+^^WI   ITEM HTEACH '&Open teaching pane'                                             
+^^WI   '#SCRIPT XTEACH' ICON='teach.png' DISABLEIF='IN'                                            
+^^WI   SPLIT 
 ^^WI   ITEM HGUIDE '&Start the Guide'                                             
 ^^WI   '#SCRIPT GUIDESTART' ICON='guide.png' DISABLEIF='IN'                                            
 ^^WI   ITEM HSTAR '&Read me first' '#SCRIPT XREADME' DISABLEIF='IN'             

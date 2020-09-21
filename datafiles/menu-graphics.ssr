@@ -1,18 +1,5 @@
 %%SSR MENU-GRAPHICS
 ^^WI  MENU CAME '&Graphics'
-^^WI   ITEM CAM '&Cameron Graphics	Ctrl+Y'
-^^WI            '#SCRIPT XCAMNORM'  ICON='cam.png'
-^^WI             ENABLEIF='L1 L2 L5' DISABLEIF='IN'
-^^WI   MENU MCAM '&Cameron actions'
-^^WI     ITEM CAM '&Cameron (View existing input files)'
-^^WI             '#SCRIPT XCAMSPEC'
-^^WI              DISABLEIF='IN'
-^^WI     ITEM CIN5 'Import last Cameron output'
-^^WI             '#USE CAMERON.L5' DISABLEIF='IN'
-^^WI     ITEM CIN5 'Import last Cameron input'
-^^WI             '#USE CAMERON.L5I' DISABLEIF='IN'
-^^WI   ENDMENU
-^^WI   SPLIT
 ^^WI   ITEM _MER 'View the structure in Mercury'
 ^^WI         '#SCRIPT MERCURY' ICON='mercury.png' DISABLEIF='IN' ENABLEIF='L5'
 ^^WI    ITEM HUS  'Mapviewer' '#SCRIPT HUSAK' DISABLEIF='IN'

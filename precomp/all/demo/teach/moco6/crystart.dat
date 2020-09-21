@@ -1,16 +1,1 @@
-#SPAWN % "CRYSDIR:shelx2cry.exe" "CRYSDIR:\demo\teach\moco6\1049704_MoCO.res"
-#LIST 4
-SCHEME 9 0 1/2F
-#SFLS
-CALC
-END
-#SFLS
-SCALE
-END
-#LIST 4
-SCHEME NUMBER=16 NPARAM=6
-PARAM 0.1 0 0 0 0 0.333
-END
-#LIST     12                                                                    
-BLOCK SCALE X'S  U'S 
-END  
+#SCRIPT xteachstart
