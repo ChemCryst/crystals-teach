@@ -1,0 +1,64 @@
+%SCRIPT XTEACHI
+%% Respond to button presses from window setup by XTEACH
+%%
+%%
+%  VARIABLE CHARACTER CDIR CFDIR
+%%
+%%
+%  VERIFY GI_BXX MNCO6 MNCO3PY3 YLID PARA
+%  GET SILENT NOSTORE ABBREVIATED 'Continue?' 'GI_BXX'
+%%
+%  CASE VALUE
+%    BLOCK  %GI_BXX% 
+%% Close window
+^^CO DISPOSE XTEACHW
+
+{I Teaching window closed. Choose Teaching datasets from the Help meun to re-open it.
+
+%      FINISH
+%    END BLOCK  
+%    BLOCK %MNCO6%
+%      EVALUATE CDIR = 'CRYSDIR:demo/teach/moco6/'
+%    END BLOCK  
+%    BLOCK %MNCO3PY3%
+%      EVALUATE CDIR = 'CRYSDIR:demo/teach/moco3py3/'
+%    END BLOCK  
+%    BLOCK %YLID%
+%      EVALUATE CDIR = 'CRYSDIR:demo/teach/ylid/'
+%    END BLOCK  
+%    BLOCK %PARA%
+%      EVALUATE CDIR = 'CRYSDIR:demo/teach/para/'
+%    END BLOCK  
+%  END CASE
+%% Re-open CRYSTALS in correct folder
+%  EVALUATE CFDIR = GETENV ( CDIR ) 
+%  IF ( .NOT. ( FILEEXISTS CFDIR ) ) THEN
+%     TRANSFER '{E Cannot find ' // CFDIR TO DISPLAY
+ {I Reinstall CRYSTALS to restore the workshop data.
+%     FINISH
+%  END IF
+%%  EVALUATE T = FILEDELETE ( CFDIR // 'crfilev2.dsc' )
+%  EVALUATE T = FILEDELETE ( CFDIR // 'SIR9x.ins' )
+%  EVALUATE T = FILEDELETE ( CFDIR // 'pretwin6.dat' )
+^^WI  SET _MAIN TEXT=
+%     TRANSFER "^^WI 'Crystals - " // CFDIR // "'" TO DISPLAY
+^^CR
+%     COPY '#SCRIPT TABRESET'
+%     TRANSFER "^^CO RESTART '" // CFDIR // -
+                     "' NEWFILE=crfilev2.dsc" TO DISPLAY
+%%
+%% MAKE SURE THE GUI HAS RECEIVED THESE COMMANDS BEFORE CLOSING DOWN!
+%% We query the value of any object by name.
+%% A value will not return until the GUI has caught up.
+%%
+^^??  _MAIN EXISTS
+%     GET NOSTORE TEXT 'About to restart in new directory...' ' '
+^^CO  SET _MAINTEXTOUTPUT EMPTY
+%     COPY '#END'
+%% Possibly redundant:
+%     FINISH
+%   END BLOCK
+%   BLOCK
+^^CO  DISPOSE QUERY
+%     FINISH
+%   END BLOCK
