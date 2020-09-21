@@ -1672,6 +1672,7 @@ C----- 8M - THE BIGGEST DISK ADDRESS WE CAN EXPECT (1995). WAS 1M
 c
 CDJWAPR99
       CHARACTER*16 COLDD, CNEWD
+	  CHARACTER*256 CPFNAM
       DIMENSION IRECOR(ISSRLI)
 C--
 C
@@ -1693,7 +1694,7 @@ C
       INCLUDE 'QSTORE.INC'
 C
 CDJWMAY00
-      DATA ICOMSZ / 8 /
+      DATA ICOMSZ / 9 /
       DATA MINSIZ / 5 /
 C
 C
@@ -1771,6 +1772,9 @@ C -- SET LOG FLAG
       LOGREQ = ISTORE(ICOMBF+5)
 C -- SET THE MONITOR FLAG
       MONREQ = ISTORE(ICOMBF+7)
+C -- SET THE SWITCH FLAG
+      KSWITC = ISTORE(ICOMBF+8)   ! 0 for no, 1 for yes
+	  IF ( NEWFIL .LE. 0 ) KSWITC = 0 ! if no new file there is no need to switch
 C -- SET TOTAL LENGTH OF FILE REQUIRED FOR NEW LISTS
       LENTOT = 0
 CDJWMAY99
@@ -2031,6 +2035,11 @@ C
       IF ( MONREQ .EQ. 0 ) CALL XPRTFI ( 0, 0 )
 C
 2720  CONTINUE
+
+      IF (KSWITC .EQ. 1 ) THEN
+        INQUIRE( NUNEW, NAME = CPFNAM )  ! get filename. It might not be what you expect because KDAOPN can auto-increment a postfix number.
+      END IF
+
 C Close new DA file / copy back from scratch.
       IF (NEWFIL .EQ. 1) THEN
         ISTAT = KFLCLS(NUNEW)
@@ -2063,8 +2072,23 @@ c            print *, NRECOR, ios
         WRITE (CMON,'(1X,A,I6,A)') 'Copied: ',NRECOR+1,' dsc records.'
         CALL XPRVDU(NCVDU, 1,0)
         IF (ISSPRT .EQ. 0) WRITE ( NCWU , '(a)' ) trim(CMON(1))
+          INQUIRE( NCDFU, NAME = CPFNAM )  ! get filename. It might not be what you expect because KDAOPN can auto-increment a postfix number.
         ISTAT = KFLCLS(NUNEW)     ! and then close scratch.
       ENDIF
+
+
+C Sneaky close and re-open without using CRYSTALS disk management.
+      IF (KSWITC .EQ. 1 ) THEN
+          WRITE (CMON,'(1X,A,A)') 'Reopening file: ', cpfnam
+          CALL XPRVDU(NCVDU, 1,0)
+          ISTAT = KFLCLS(NCDFU)
+          ISTAT = KDAOPN ( NCDFU , CPFNAM, ISSOLD , ISSWRI )
+          IF ( ISTAT .LT. 0 ) THEN
+            WRITE (CMON,'(1X,A,A)') '{E Failed to reopen .dsc ', cpfnam
+            CALL XPRVDU(NCVDU, 1,0)
+	  ! Bad error
+          END IF
+      END IF
 
 C FLUSH DISK BUFFERS
       CALL XGIVE

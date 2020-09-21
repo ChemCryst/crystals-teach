@@ -2447,12 +2447,12 @@ DISK               8    0
     .RECORDS            1    0    1    0    0         0
     .FREE               2    0    1    0    0         0
     .TRIES              3    0    1    0    0         1
-    .SIZE               4    0    1    0    0         5
+    .SIZE               4    0    1    0    0         5 
    8.CHECK              1 9999    0    0
          3
     .LEVEL              1    0    1    3    0 LOW
      LOW            MEDIUM         HIGH
-PURGE              1    0
+PURGE              2    0
    4    4096 CRYSTALSFIDDLE
    1.PURGE              8    1    0    0
          5    5    5    5    1    3    1    3
@@ -2466,6 +2466,10 @@ PURGE              1    0
     .LIST               7    0    1    0    0         0
     .MONITOR            8    0    1    2    0 LOW
      HIGH           LOW
+   2.ACTION             1    1    0    0
+         3
+    .REOPEN             9    0    1    2    0 NO
+     NO             YES
 SIMULATE          12    0
    6    4096 CRYSTALSFIDDLE
    1.ENVIRONMENT        1 9999    0    0

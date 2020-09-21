@@ -1230,8 +1230,8 @@ cdjwdec11            ENDIF
 cdjwdec11
             IF ( ISYSIN .EQ. ISCRIP ) THEN
 C            close back to top level if a SCRIPT does not exist
-             WRITE(CMON,'(A/A/A/A)')
-     1      '{EThe requested SCRIPT was not found. ',
+             WRITE(CMON,'(2A/A/A/A)')
+     1      '{EThe requested SCRIPT was not found: ',CRFILE(1:NCHAR),
      2      '{ECRYSTALS is closing down the SCRIPT processor.',
      3      '{EProbably a bug.',
      4      '{EPlease send the .log and .lis files to Oxford'
