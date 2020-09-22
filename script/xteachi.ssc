@@ -51,12 +51,19 @@
 %      COPY '#SCRIPT XQUESTIO'
 %      IF ANSWER .EQ. FALSE THEN
 %        EVALUATE T = FILEDELETE ( CFDIR // 'crfilev2.dsc' )
-%      SHOW T
+%        IF .NOT. T THEN
+%% crfilev2.dsc could be the current dsc file. Switch to new file (temp.dsc) and try again.
+{I Could not delete .dsc. Trying again. 
+%          EVALUATE T = FILEDELETE ( CFDIR // 'temp.dsc' )
+%          COPY '#PURGE temp'
+%          COPY 'ACTION REOPEN=YES'
+%          COPY 'END'
+%          EVALUATE T = FILEDELETE ( CFDIR // 'crfilev2.dsc' )
+%          SHOW T
+%        END IF
 {I  Teaching data reset.
 %      END IF
 %  END IF
-%%
-%  GET NOSTORE TEXT 'Press any key' 'Any'
 %%
 ^^WI  SET _MAIN TEXT=
 %     TRANSFER "^^WI 'Crystals - " // CFDIR // "'" TO DISPLAY
