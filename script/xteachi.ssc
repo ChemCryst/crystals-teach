@@ -7,7 +7,7 @@
 % VARIABLE CHARACTER QTITLE QLINE1 QLINE2 BUTTOK BUTTXX 
 % VARIABLE LOGICAL   ANSWER T
 %%
-%  VERIFY GI_BXX MNCO6 MNCO3PY3 YLID PARA
+%  VERIFY GI_BXX MNCO6 MNCO3PY3 YLID CUOAC PARA
 %  GET SILENT NOSTORE ABBREVIATED 'Continue?' 'GI_BXX'
 %%
 %  CASE VALUE
@@ -28,6 +28,9 @@
 %    BLOCK %YLID%
 %      EVALUATE CDIR = 'CRYSDIR:demo/teach/ylid/'
 %    END BLOCK  
+%    BLOCK %CUOAC%
+%      EVALUATE CDIR = 'CRYSDIR:demo/teach/cuoac/'
+%    END BLOCK  
 %    BLOCK %PARA%
 %      EVALUATE CDIR = 'CRYSDIR:demo/teach/para/'
 %    END BLOCK  
@@ -35,7 +38,7 @@
 %% Re-open CRYSTALS in correct folder
 %  EVALUATE CFDIR = GETENV ( CDIR ) 
 %  IF ( .NOT. ( FILEEXISTS CFDIR ) ) THEN
-%     TRANSFER '{E Cannot find ' // CFDIR TO DISPLAY
+%     TRANSFER '{E Cannot find "' // CFDIR // '"' TO DISPLAY
  {I Reinstall CRYSTALS to restore the workshop data.
 %     FINISH
 %  END IF
