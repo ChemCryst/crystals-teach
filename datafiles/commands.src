@@ -4242,7 +4242,7 @@ BONDING            6    0
    1.DEFAULTS           5 9999    0    0
          2    2    2    2    2
     .TOLTYPE           21    0    1    0    0 1.0
-    .TOLERANCE         22    0    1    0    0 1.21
+    .TOLERANCE         22    0    1    0    0 1.1
     .MAXBONDS          23    0    1    0    0 12.0
     .NOSYMMETRY        24    0    1    0    0 0.0
     .SIGCHANGE         25    0    1    0    0 0.1
