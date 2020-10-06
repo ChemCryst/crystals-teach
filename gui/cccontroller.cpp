@@ -2217,7 +2217,7 @@ void CcController::StoreKey( string key, string value )
 {
 
  wxString ckey = wxT("Chem Cryst");
- wxString pkey = wxT("Crystals/");
+ wxString pkey = wxT("CrystalsTeach/");
  pkey += wxString(key.c_str(),wxConvUTF8);
  wxString wval(value.c_str(),wxConvUTF8);
  wxConfig * config = new wxConfig(ckey);
@@ -2234,7 +2234,7 @@ string CcController::GetKey( string key )
 
 
  wxString str;
- wxString pkey = wxT("Crystals/");
+ wxString pkey = wxT("CrystalsTeach/");
  pkey += wxString(key.c_str(),wxConvUTF8);
  wxString wstr;
 
@@ -2586,7 +2586,7 @@ string CcController::OpenDirDialog()
     wxConfig * config = new wxConfig("Chem Cryst");
     wxString pathname;
     wxString cwd = wxGetCwd(); //This dir dialog changes the working dir. Save it.
-    if ( ! config->Read("Crystals/Strdir",&pathname) ) {
+    if ( ! config->Read("CrystalsTeach/Strdir",&pathname) ) {
       pathname = cwd;
     }
 
@@ -2598,7 +2598,7 @@ string CcController::OpenDirDialog()
     if (dirDialog.ShowModal() == wxID_OK )
     {
         pathname = dirDialog.GetPath();
-        config->Write("Crystals/Strdir",pathname);
+        config->Write("CrystalsTeach/Strdir",pathname);
     }
     else
     {
