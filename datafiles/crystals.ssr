@@ -235,12 +235,10 @@ END
 \ Check for old format list 5's. This can be disabled
 \ if you have no old CRYSTALS DSC or list 5 files from
 \ before Feb 1999.
-#ifdef CRY_GUI
-\SCRIPT dsccheck
-#endif
 \
 \ Load lists required for GID model view.
 #ifdef CRY_GUI
+#SET AUTOUPDT ON
 \SCRIPT xnewgui
 #endif
 \
@@ -250,11 +248,9 @@ END
 \ Display the "Tip of the day". This line can be removed
 \ if it really annoys you:
 #ifdef CRY_GUI
-\SCRIPT TIPAUTO
-\SCRIPT GUIDEAUTO
+\ SCRIPT TIPAUTO
+\ SCRIPT GUIDEAUTO
+\SCRIPT XTEACH
 #endif
-#ifndef __DVF__ 
-\USE CRYUSEFILE:
-#endif
-\
+\ 
 \USE CONTROL
