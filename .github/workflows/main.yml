@@ -196,7 +196,9 @@ jobs:
       if: failure() && matrix.os == 'windows-latest'
       shell: cmd
       run: |
-        echo "::set-env name=testfail::true"
+#        echo "::set-env name=testfail::true"
+        echo "testfail=true" >> $GITHUB_ENV
+
         del /q ${{ matrix.testprefix }}${{ matrix.testsuffix }}.org
         copy *.out ${{ matrix.testprefix }}${{ matrix.testsuffix }}.org
         del /q *.*
@@ -205,7 +207,8 @@ jobs:
       working-directory: test_suite
       if: failure() && matrix.os == 'ubuntu-latest'
       run: |
-        echo "::set-env name=testfail::true"
+#        echo "::set-env name=testfail::true"
+        echo "testfail=true" >> $GITHUB_ENV
         rm -f ${{ matrix.testprefix }}${{ matrix.testsuffix }}.org/*
         cp *.out ${{ matrix.testprefix }}${{ matrix.testsuffix }}.org
         rm -f * || echo
