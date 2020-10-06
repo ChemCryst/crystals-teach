@@ -14,7 +14,7 @@
 ^^WI         SPLIT
 ^^WI         TOOL _MFO fourier.png
 ^^WI 'Fourier'
-^^WI          '#SCRIPT XFOUR_NDIFF' DISABLEIF='IN QS' ENABLEIF='L5 L1 L2'
+^^WI          '#SCRIPT XFOUR_NDIFF' DISABLEIF='IN QS' ENABLEIF='L5 L1 L2 L6'
 ^^WI         TOOL _MADDH addh.png
 ^^WI 'Add Hydrogen'
 ^^WI         '#SCRIPT GFINDH'
@@ -42,10 +42,10 @@
 ^^WI          '#SCRIPT EDLIST16' DISABLEIF='IN' ENABLEIF='L5'
 ^^WI         TOOL _DO33 dorefine.png
 ^^WI 'Setup refinement'
-^^WI          '#SCRIPT SWRITE5' DISABLEIF='IN'
+^^WI          '#SCRIPT SWRITE5' DISABLEIF='IN' ENABLEIF='L1 L5 L6'
 ^^WI         TOOL _DO33 runref.png
 ^^WI 'Initiate some cycles of refinement'
-^^WI          '#SCRIPT XREFINE' DISABLEIF='IN'
+^^WI          '#SCRIPT XREFINE' DISABLEIF='IN' ENABLEIF='L1 L5 L6'
 ^^WI         SPLIT
 ^^WI         TOOL _AGREE 'scatter.png' 'Fo vs Fc graph' '#SCRIPT XFOVSFC' 
 ^^WI          ENABLEIF='L6 L5 L1 L2' DISABLEIF='IN' 
