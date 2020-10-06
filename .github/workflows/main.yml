@@ -72,7 +72,7 @@ jobs:
 # WIN ONLY
     - name: Install MinGW compiler and tools
       if: matrix.os == 'windows-latest'
-      run: msys2do pacman --noconfirm -S mingw-w64-x86_64-toolchain mingw-w64-x86_64-openblas mingw-w64-x86_64-perl msys2-w32api-runtime mingw-w64-x86_64-curl
+      run: msys2do pacman --disable-download-timeout --noconfirm -S mingw-w64-x86_64-toolchain mingw-w64-x86_64-openblas mingw-w64-x86_64-perl msys2-w32api-runtime mingw-w64-x86_64-curl
 
 # LINUX ONLY
     - name: Install Ubuntu compiler and tools
