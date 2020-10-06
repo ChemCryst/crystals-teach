@@ -72,6 +72,7 @@
 %     TRANSFER "^^WI 'Crystals - " // CFDIR // "'" TO DISPLAY
 ^^CR
 %     COPY '#SCRIPT TABRESET'
+^^CO DISPOSE XTEACHW
 %     TRANSFER "^^CO RESTART '" // CFDIR // -
                      "' NEWFILE=crfilev2.dsc" TO DISPLAY
 %%

@@ -13,7 +13,7 @@
 ^^WI COMMAND='#SCRIPT XTEACHI' DISABLEIF='IN' CANCEL='GI_BXX'
 ^^WI GRID HO NROWS=13 NCOLS=3
 ^^WI {
-^^WI   @ 2,2 BUTTON YLID 'Load &Paracetamol structure' DISABLEIF='IN'
+^^WI   @ 2,2 BUTTON PARA 'Load &Paracetamol structure' DISABLEIF='IN'
 ^^WI   @ 4,2 BUTTON MNCO6 'Load &Mo(CO)\_6 structure' DISABLEIF='IN'
 ^^WI   @ 6,2 BUTTON MNCO3PY3 'Load &Mo(CO)\_3(pyridine)\_3 structure' DISABLEIF='IN'
 ^^WI   @ 8,2 BUTTON CUOAC 'Load &Cu(OAc)\_2 structure' DISABLEIF='IN'
