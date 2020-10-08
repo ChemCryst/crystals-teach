@@ -59,7 +59,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
       ${CMAKE_C_COMPILER}
       ARGS                    --version
       OUTPUT_VARIABLE _compiler_output)
-  string(REGEX REPLACE "^.*([0-9]\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
+  string(REGEX REPLACE "^.*([0-9]*\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
   message(STATUS "C compiler version: ${gcc_compiler_version} [${CMAKE_C_COMPILER}]")
 
   if(gcc_compiler_version VERSION_LESS "4.6")
@@ -72,7 +72,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
       ${CMAKE_CXX_COMPILER}
       ARGS                    --version
       OUTPUT_VARIABLE _compiler_output)
-  string(REGEX REPLACE "^.*([0-9]\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
+  string(REGEX REPLACE "^.*([0-9]*\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
   message(STATUS "C++ compiler version: ${gcc_compiler_version} [${CMAKE_CXX_COMPILER}]")
 
   if(gcc_compiler_version VERSION_LESS "4.6")
@@ -85,7 +85,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
       ${CMAKE_Fortran_COMPILER}
       ARGS                    --version
       OUTPUT_VARIABLE _compiler_output)
-  string(REGEX REPLACE "^.*([0-9]\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
+  string(REGEX REPLACE "^.*([0-9]*\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
   message(STATUS "Fortran compiler version: ${gcc_compiler_version} [${CMAKE_Fortran_COMPILER}]")
 
   if(gcc_compiler_version VERSION_LESS "4.6")
