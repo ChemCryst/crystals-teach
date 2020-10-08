@@ -53,6 +53,7 @@ if (${CMAKE_SYSTEM_NAME} MATCHES "MINGW64_NT" OR ${CMAKE_SYSTEM_NAME} MATCHES "M
     SET(MSYS ON)
 endif ()
 
+
 # check gcc suite version
 if(CMAKE_COMPILER_IS_GNUCC)
 
