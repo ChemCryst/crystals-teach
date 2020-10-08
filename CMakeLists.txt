@@ -65,7 +65,7 @@ if(CMAKE_COMPILER_IS_GNUCC)
       message(FATAL_ERROR "Your C compiler is too old")
   endif ()
 
- if( CMAKE_FORTRAN_COMPILER_VERSION VERSION_LESS 4.6 )
+ if( CMAKE_Fortran_COMPILER_VERSION VERSION_LESS 4.6 )
       message(FATAL_ERROR "Your Fortran compiler is too old")
   endif ()
 endif ()
