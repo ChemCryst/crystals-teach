@@ -55,43 +55,17 @@ endif ()
 
 # check gcc suite version
 if(CMAKE_COMPILER_IS_GNUCC)
-  exec_program(
-      ${CMAKE_C_COMPILER}
-      ARGS                    --version
-      OUTPUT_VARIABLE _compiler_output)
-  string(REGEX REPLACE "^.*([0-9]*\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
-  message(STATUS "C compiler version: ${gcc_compiler_version} [${CMAKE_C_COMPILER}]")
 
-  if(gcc_compiler_version VERSION_LESS "4.6")
-      message(FATAL_ERROR "Your C compiler is too old")
-  elseif(gcc_compiler_version VERSION_LESS "4.6")
-      message(WARNING "Your C compiler might be too old")
+  if(CMAKE_CXX_COMPILER_VERSION VERSION_LESS 4.6)
+      message(FATAL_ERROR "Your C++ compiler is too old")
   endif ()
 
-  exec_program(
-      ${CMAKE_CXX_COMPILER}
-      ARGS                    --version
-      OUTPUT_VARIABLE _compiler_output)
-  string(REGEX REPLACE "^.*([0-9]*\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
-  message(STATUS "C++ compiler version: ${gcc_compiler_version} [${CMAKE_CXX_COMPILER}]")
-
-  if(gcc_compiler_version VERSION_LESS "4.6")
+  if(CMAKE_C_COMPILER_VERSION VERSION_LESS 4.6)
       message(FATAL_ERROR "Your C compiler is too old")
-  elseif(gcc_compiler_version VERSION_LESS "4.6")
-      message(WARNING "Your C compiler might be too old")
   endif ()
 
-  exec_program(
-      ${CMAKE_Fortran_COMPILER}
-      ARGS                    --version
-      OUTPUT_VARIABLE _compiler_output)
-  string(REGEX REPLACE "^.*([0-9]*\\.[0-9]\\.[0-9]).*$" "\\1" gcc_compiler_version ${_compiler_output})
-  message(STATUS "Fortran compiler version: ${gcc_compiler_version} [${CMAKE_Fortran_COMPILER}]")
-
-  if(gcc_compiler_version VERSION_LESS "4.6")
-      message(FATAL_ERROR "Your C compiler is too old")
-  elseif(gcc_compiler_version VERSION_LESS "4.6")
-      message(WARNING "Your C compiler might be too old")
+ if( CMAKE_FORTRAN_COMPILER_VERSION VERSION_LESS 4.6 )
+      message(FATAL_ERROR "Your Fortran compiler is too old")
   endif ()
 endif ()
 
