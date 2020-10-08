@@ -315,6 +315,12 @@ IF (Fortran_COMPILER_NAME MATCHES "gfortran")  # gfortran
     SET(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -std=gnu++11 -O1 -g")
     SET(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -O1 -g")
 
+# gfortran >= 10 raises error for argument mismatch. Turn it back to a warning with this flag.
+    if ( CMAKE_Fortran_COMPILER_VERSION VERSION_GREATER_EQUAL 10.0 )
+        SET (CMAKE_Fortran_FLAGS_RELEASE "${CMAKE_Fortran_FLAGS_RELEASE} -fallow-argument-mismatch")
+        SET (CMAKE_Fortran_FLAGS_DEBUG   "${CMAKE_Fortran_FLAGS_DEBUG} -fallow-argument-mismatch")
+    endif ()
+
     if ( WIN32 )
 
 		ENABLE_LANGUAGE(RC)
