@@ -49,7 +49,6 @@ CL ..\bits\loader\crysload.cc %CDEF% /EHs /W3 /TP /O2 /D"NDEBUG" /MD /link shell
 del crysload.obj
 
 copy ..\bits\sir92\form.sda form.dat || ( make_err.bat )
-copy ..\bits\rc93\rc93.ssr rc93.srt || ( make_err.bat )
 goto exit
 
 :clean
