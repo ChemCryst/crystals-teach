@@ -6,7 +6,7 @@ on:
 jobs:
   delete-artifacts:
     runs-on: ubuntu-latest
-    steps:
+    steps: 
       - uses: kolpav/purge-artifacts-action@v1
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
