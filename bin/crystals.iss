@@ -61,7 +61,6 @@ LicenseFile=..\bin\licence.txt
 InfoAfterFile=..\bin\postinst.txt
 
 [Dirs]
-Name: {app}\Manual
 Name: {app}\Script
 Name: {autoappdata}\crystals\demo; Permissions: users-modify
 Name: {app}\mce
@@ -71,18 +70,13 @@ Name: {app}\MCE\mce_manual_soubory
 Source: ..\build\*.*; DestDir: {app}\; Excludes: "make*,buildfile.bat,code.bat"; Flags: ignoreversion;
 Source: ..\build\script\*.*; DestDir: {app}\script\; Excludes: "*~";
 Source: ..\build\mce\*.*; DestDir: {app}\mce\;  Flags: ignoreversion recursesubdirs;
-Source: ..\build\manual\*.*; DestDir: {app}\manual\; Flags: ignoreversion recursesubdirs;
 Source: ..\build\demo\*; DestDir: {autoappdata}\crystals\demo\; Flags: recursesubdirs; Excludes: "*.doc"; Permissions: users-modify;
 
 [Icons]
 Name: "{userdesktop}\Crystals Teaching Version";                 Filename: "{app}\crysload.exe";        WorkingDir: "{app}"; IconFilename: "{app}\crystals.exe"; IconIndex: 0; Check: Not IsAdminInstallMode;
-Name: "{userdesktop}\Crystals Getting Started"; Filename: "{app}\manual\readme.html";  WorkingDir: "{app}"; Check: Not IsAdminInstallMode;
 Name: "{commondesktop}\Crystals Teaching Version";                 Filename: "{app}\crysload.exe";        WorkingDir: "{app}"; IconFilename: "{app}\crystals.exe"; IconIndex: 0; Check: IsAdminInstallMode;
-Name: "{commondesktop}\Crystals Getting Started"; Filename: "{app}\manual\readme.html";  WorkingDir: "{app}"; Check: IsAdminInstallMode;
 
 Name: "{group}\Crystals Teaching Version";                       Filename: "{app}\crysload.exe";        WorkingDir: "{app}"; IconFilename: "{app}\crystals.exe"; IconIndex: 0;
-Name: "{group}\HTML help";                      Filename: "{app}\Manual\primer.html"; WorkingDir: "{app}"
-Name: "{group}\Getting Started";                Filename: "{app}\manual\readme.html";  WorkingDir: "{app}"
 Name: "{group}\Uninstall CRYSTALS";             Filename: "{uninstallexe}";
 Name: "{group}\Example structures";             Filename: "{autoappdata}\crystals\demo\"
 Name: "{group}\Script folder";                  Filename: "{app}\script\";
