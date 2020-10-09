@@ -252,5 +252,8 @@ END
 \ SCRIPT GUIDEAUTO
 \SCRIPT XTEACH
 #endif
+#ifndef __DVF__ 
+\USE CRYUSEFILE:
+#endif
 \ 
 \USE CONTROL
