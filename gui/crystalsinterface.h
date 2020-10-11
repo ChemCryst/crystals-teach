@@ -204,9 +204,9 @@ typedef std::string tstring;
 #endif	
 
 #ifdef __MIN__
-#ifndef CRY_GUI 
- #define CRY_GUI
-#endif
+//#ifndef CRY_GUI 
+// #define CRY_GUI
+//#endif
   #ifndef CRY_USEWX
     #define CRY_USEWX
   #endif
