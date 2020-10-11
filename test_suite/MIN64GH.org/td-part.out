@@ -64,7 +64,6 @@ Space group symbol is   P    1
 # PUNCHED ON 26/01/17 AT 13:33:47
 #
 #LIST      5
-Bonds: Update required - There is no list 41
 #BONDCALC FORCE
 # INPUT A TRADITIONAL LIST 6
 #USE TD-PART-6.HKL
@@ -9745,7 +9744,7 @@ END
  List type   6 with serial number    36 is the current version.
  You may still save this list with DELETE n ACTION=NO
 #PURG
- List type    6  serial number   36 from    66831 to   100762 will not be copied ( deleted )         
+ List type    6  serial number   36 from    66803 to   100734 will not be copied ( deleted )         
  The    Data    file is being rebuilt -
  DO NOT abort the program
  The new disc index has been re-written 

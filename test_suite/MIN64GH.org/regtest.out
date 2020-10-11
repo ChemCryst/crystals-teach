@@ -100,7 +100,6 @@ Summary of Deviations
 
  List 5 now contains   21 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    21 atoms
@@ -136,7 +135,6 @@ Bonds: Update required - List5 length change
  The following atom(s) will be deleted
     Q   6
  List   5 now contains     20 atom(s)
-Bonds: Update required - List5 length change
 #TITLE TEST 2
 #REGULAR KEEP
 Input: mapping    6 atoms onto    6
@@ -221,6 +219,8 @@ Uprime = U(med).U(max)/U(min), Watkin, Acta Cryst (2000) B56 747-749
 
 Bond length deviations
 C1-C2               C101-C102            0.000
+test 2                                                      	Bond mismatch C      1 C      2 C    101 C    102
+{E Warning: bond mismatch
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
 O4-C5               O104-C105            0.000
@@ -270,7 +270,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   26 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    26 atoms
@@ -409,7 +408,6 @@ Summary of Deviations
 
  List 5 now contains   21 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    21 atoms
@@ -445,7 +443,6 @@ Bonds: Update required - List5 length change
  The following atom(s) will be deleted
     Q   6
  List   5 now contains     20 atom(s)
-Bonds: Update required - List5 length change
 #TITLE TEST 4
 #REGULAR KEEP
 Input: mapping    6 atoms onto    6
@@ -530,6 +527,8 @@ Uprime = U(med).U(max)/U(min), Watkin, Acta Cryst (2000) B56 747-749
 
 Bond length deviations
 C1-C2               C101-C102            0.000
+test 4                                                      	Bond mismatch C      1 C      2 C    101 C    102
+{E Warning: bond mismatch
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
 O4-C5               O104-C105            0.000
@@ -579,7 +578,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   26 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    26 atoms
@@ -719,7 +717,6 @@ Summary of Deviations
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -750,7 +747,6 @@ Bonds: Update required - List5 length change
  The following atom(s) will be deleted
     Q   6
  List   5 now contains     15 atom(s)
-Bonds: Update required - List5 length change
 #TITLE TEST 6
 #REGULAR AUGMENT
 Input: mapping    6 atoms onto    6
@@ -835,6 +831,8 @@ Uprime = U(med).U(max)/U(min), Watkin, Acta Cryst (2000) B56 747-749
 
 Bond length deviations
 C1-C2               C101-C102            0.000
+test 6                                                      	Bond mismatch C      1 C      2 C    101 C    102
+{E Warning: bond mismatch
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
 O4-C5               O104-C105            0.000
@@ -884,7 +882,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1013,7 +1010,6 @@ Summary of Deviations
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1044,7 +1040,6 @@ Bonds: Update required - List5 length change
  The following atom(s) will be deleted
     Q   6
  List   5 now contains     15 atom(s)
-Bonds: Update required - List5 length change
 #TITLE TEST 8
 #REGULAR REPLACE
 Input: mapping    6 atoms onto    6
@@ -1129,6 +1124,8 @@ Uprime = U(med).U(max)/U(min), Watkin, Acta Cryst (2000) B56 747-749
 
 Bond length deviations
 C1-C2               C101-C102            0.000
+test 8                                                      	Bond mismatch C      1 C      2 C    101 C    102
+{E Warning: bond mismatch
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
 O4-C5               O104-C105            0.000
@@ -1178,7 +1175,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1308,7 +1304,6 @@ Summary of Deviations
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1339,7 +1334,6 @@ Bonds: Update required - List5 length change
  The following atom(s) will be deleted
     Q   6
  List   5 now contains     15 atom(s)
-Bonds: Update required - List5 length change
 #TITLE TEST 10
 #REGULAR REPLACE
 Input: mapping    6 atoms onto    6
@@ -1426,12 +1420,12 @@ Bond length deviations
 C1-C2               C101-C102            0.000
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
-O4-C5               O104-C105            0.000
+C3-C5               C103-C105            0.000
 
 Torsion angles are omitted from the statistics if angles C-A-B or A-B-D are within 5 degrees of co-linearity
 Torsion angle deviations                                                          Angles, Difference & Status
 C1-C2-C3-O4                           C101-C102-C103-O104                         0.00    0.00    0.00 OK                             
-C2-C3-O4-C5                           C102-C103-O104-C105                         0.00    0.00    0.00 OK                             
+C1-C2-C3-C5                           C101-C102-C103-C105                         0.00    0.00    0.00 OK                             
 
 
 Summary of Deviations
@@ -1473,7 +1467,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1602,7 +1595,6 @@ Summary of Deviations
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1633,7 +1625,6 @@ Bonds: Update required - List5 length change
  The following atom(s) will be deleted
     Q   6
  List   5 now contains     15 atom(s)
-Bonds: Update required - List5 length change
 #TITLE TEST 12
 #REGULAR REPLACE
 Input: mapping    6 atoms onto    6
@@ -1720,12 +1711,12 @@ Bond length deviations
 C1-C2               C101-C102            0.000
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
-O4-C5               O104-C105            0.000
+C3-C5               C103-C105            0.000
 
 Torsion angles are omitted from the statistics if angles C-A-B or A-B-D are within 5 degrees of co-linearity
 Torsion angle deviations                                                          Angles, Difference & Status
 C1-C2-C3-O4                           C101-C102-C103-O104                         0.00    0.00    0.00 OK                             
-C2-C3-O4-C5                           C102-C103-O104-C105                         0.00    0.00    0.00 OK                             
+C1-C2-C3-C5                           C101-C102-C103-C105                         0.00    0.00    0.00 OK                             
 
 
 Summary of Deviations
@@ -1767,7 +1758,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
 #DISP HI
  Summary of contents of list  5 - Parameters
  The list currently contains    16 atoms
@@ -1881,6 +1871,8 @@ Uprime = U(med).U(max)/U(min), Watkin, Acta Cryst (2000) B56 747-749
 
 Bond length deviations
 C1-C2               C101-C102            0.000
+test 13                                                     	Bond mismatch C      1 C      2 C    101 C    102
+{E Warning: bond mismatch
 C2-C3               C102-C103            0.000
 C3-O4               C103-O104            0.000
 O4-C5               O104-C105            0.000
@@ -1930,7 +1922,6 @@ Individual Delta          0.004         0.008   O4       - O104
 
  List 5 now contains   16 atoms
  list modification complete
-Bonds: Update required - List5 length change
  The following atom(s) will be changed
          Occ    x     y     z      U11   U22   U33  U23  U13  U12    Spare     Part
                                    Uiso  Size D/100 A/100

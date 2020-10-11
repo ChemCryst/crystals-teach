@@ -4037,7 +4037,7 @@ Bonds: Update required - List5 length change
  TEST THE LIST MODIFICATION ROUTINES                                                  Date              Time          
 
 
- Print list type    10     serial number        1     Address    51303     Length     587     Created on                          
+ Print list type    10     serial number        1     Address    51289     Length     587     Created on                          
 
 
 
@@ -4282,7 +4282,7 @@ Bonds: Update required - List5 length change
  BENZAM  -  TEST HYDROGEN PLACING ROUTINES                                            Date              Time          
 
 
- Print list type     5     serial number        4     Address    53020     Length     785     Created on                          
+ Print list type     5     serial number        4     Address    53006     Length     785     Created on                          
 
 
 
@@ -4447,7 +4447,7 @@ Bonds: Update required - List5 length change
  BENZAM  -  TEST HYDROGEN PLACING ROUTINES                                            Date              Time          
 
 
- Print list type     5     serial number        5     Address    55031     Length     677     Created on                          
+ Print list type     5     serial number        5     Address    54947     Length     677     Created on                          
 
 
 
@@ -5013,7 +5013,7 @@ for Uprime see Acta Cryst (2000). B56, 747-749
  BENZAM  -  TEST HYDROGEN PLACING ROUTINES                                            Date              Time          
 
 
- Print list type     5     serial number        6     Address    56602     Length     677     Created on                          
+ Print list type     5     serial number        6     Address    56518     Length     677     Created on                          
 
 
 
@@ -6553,7 +6553,7 @@ Bonds: Update required - List5 length change
  P2S1C TEST DECK  -  TAKEN FROM XRAY                                                  Date              Time          
 
 
- Print list type     6     serial number       86     Address    86631     Length    7571     Created on                          
+ Print list type     6     serial number       86     Address    86197     Length    7571     Created on                          
 
  Quantity            Minimum        Maximum       Mean value    R.M.S. value
 
@@ -6688,7 +6688,7 @@ Bonds: Update required - List5 length change
  P2S1C TEST DECK  -  TAKEN FROM XRAY                                                  Date              Time          
 
 
- Print list type     6     serial number       90     Address    94824     Length    7571     Created on                          
+ Print list type     6     serial number       90     Address    94390     Length    7571     Created on                          
 
  Quantity            Minimum        Maximum       Mean value    R.M.S. value
 
@@ -6823,7 +6823,7 @@ Bonds: Update required - List5 length change
  P2S1C TEST DECK  -  TAKEN FROM XRAY                                                  Date              Time          
 
 
- Print list type     5     serial number       14     Address   102395     Length     137     Created on                          
+ Print list type     5     serial number       14     Address   101961     Length     137     Created on                          
 
 
 
@@ -7493,7 +7493,7 @@ Mean C-C su =   0.0182
  P2S1C TEST DECK  -  TAKEN FROM XRAY                                                  Date              Time          
 
 
- Print list type     6     serial number       96     Address    94824     Length    7571     Created on                          
+ Print list type     6     serial number       96     Address    94390     Length    7571     Created on                          
 
  Quantity            Minimum        Maximum       Mean value    R.M.S. value
 
@@ -8111,7 +8111,7 @@ ___________
  HEXACHLOROBORAZINE  -  LIST INPUT                                                    Date              Time          
 
 
- Print list type    11     serial number       20     Address   129815     Length     809     Created on                          
+ Print list type    11     serial number       20     Address   129381     Length     809     Created on                          
 
  Inverse matrix
 
@@ -8162,7 +8162,7 @@ ___________
  HEXACHLOROBORAZINE  -  LIST INPUT                                                    Date              Time          
 
 
- Print list type    11     serial number       20     Address   129815     Length     809     Created on                          
+ Print list type    11     serial number       20     Address   129381     Length     809     Created on                          
 
 
  Print List 11 as correlation matrix
@@ -8253,7 +8253,7 @@ ___________
  HEXACHLOROBORAZINE  -  LIST INPUT                                                    Date              Time          
 
 
- Print list type    11     serial number       20     Address   129815     Length     809     Created on                          
+ Print list type    11     serial number       20     Address   129381     Length     809     Created on                          
 
  Inverse matrix
 
@@ -8443,7 +8443,7 @@ Bonds: Update required - List5 length change
  P6122 TEST DECK FROM LARSON  -  MUCH MODIFIED FOR CRYSTALS                           Date              Time          
 
 
- Print list type     5     serial number       30     Address   135041     Length     150     Created on                          
+ Print list type     5     serial number       30     Address   134529     Length     150     Created on                          
 
 
 
@@ -8622,7 +8622,7 @@ LS-scale=  1.000   Wilson Scale=  0.000
  P6122 TEST DECK FROM LARSON  -  MUCH MODIFIED FOR CRYSTALS                           Date              Time          
 
 
- Print list type     6     serial number      118     Address   134330     Length     711     Created on                          
+ Print list type     6     serial number      118     Address   133818     Length     711     Created on                          
 
  Quantity            Minimum        Maximum       Mean value    R.M.S. value
 
