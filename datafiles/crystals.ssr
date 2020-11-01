@@ -240,6 +240,7 @@ END
 #ifdef CRY_GUI
 #SET AUTOUPDT ON
 \SCRIPT xnewgui
+\SCRIPT dsccheck
 #endif
 \
 \ Use local crystart.dat if present.
